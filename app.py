@@ -7,8 +7,13 @@ st.set_page_config(page_title="Sports Sentiment Tracker", layout = "wide")
 st.title("Sports Sentiment Tracker")
 st.markdown("Sentiment analysis of the latest football/soccer news using VADER NLP")
 
-df = pd.read_csv("data/articles_with_sentiment.csv")
-df["published_at"] = pd.to_datetime(df["published_at"])
+@st.cache_data
+def load_data():
+    df = pd.read_csv("data/articles_with_sentiment.csv")
+    df["published_at"] = pd.to_datetime(df["published_at"])
+    return df
+
+df = load_data()
 
 total = len(df)
 positive = len(df[df["sentiment_label"] == "Positive"])
