@@ -86,3 +86,6 @@ streamlit run app.py
 - **Sentiment over time** -- daily average compound score trend line
 - **Score histogram** -- distribution of all compound scores
 - **Filterable article table** -- browse and filter articles by sentiment label
+
+## Roadmap
+- [ ] In-app data refresh button to fetch latest articles without running scripts manually
