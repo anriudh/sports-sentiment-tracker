@@ -40,7 +40,7 @@ sports-sentiment-tracker/
 ├── data/                 # CSVs and chart outputs (gitignored raw data)
 ├── app.py                # Streamlit dashboard
 ├── requirements.txt
-└── runtime.txt
+
 ```
 
 ---
