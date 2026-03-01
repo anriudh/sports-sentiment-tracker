@@ -2,7 +2,7 @@
 
 A data pipeline that fetches live football/soccer news via the NewsAPI, runs VADER sentiment analysis on article headlines and descriptions, and presents the results through an interactive Streamlit dashboard.
 
-**Live demo:** https://sports-sentiment-tracker-iwrofipykrgk3osjrxszdt.streamlit.app/
+**Live demo:** https://sports-sentiment-tracker.streamlit.app/
 
 ---
 
