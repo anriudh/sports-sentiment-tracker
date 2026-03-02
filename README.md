@@ -108,5 +108,3 @@ It also provided hands-on experience dealing with **real, messy text data**, whi
 ## 🔮 Possible Improvements
 
 * Add in-dashboard data refresh
-* Compare VADER with transformer-based models
-* Track sentiment for specific teams or leagues
