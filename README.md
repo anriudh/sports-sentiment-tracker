@@ -1,91 +1,112 @@
-# Sports Sentiment Tracker
+# 📊 Sports Sentiment Tracker
 
-A data pipeline that fetches live football/soccer news via the NewsAPI, runs VADER sentiment analysis on article headlines and descriptions, and presents the results through an interactive Streamlit dashboard.
+A small end-to-end data pipeline that collects recent football news, analyzes sentiment using NLP, and visualizes the results in an interactive dashboard.
 
-**Live Demo:** https://sports-sentiment-tracker.streamlit.app/
+I built this project to practice working with **real APIs, modular pipelines, and NLP on real-world text**, rather than curated datasets.
 
----
-
-## What it does
-
-- Fetches up to 100 recent football/soccer news articles using the NewsAPI
-- Scores each article's sentiment using VADER NLP (compound score from -1 to +1)
-- Classifies articles as Positive, Neutral, or Negative
-- Visualizes sentiment distribution, trends over time, and score spread
-- Displays an interactive, filterable article table with scores
+**Live Demo:**
+https://sports-sentiment-tracker.streamlit.app/
 
 ---
 
-## Tech Stack
+## 🚀 What it does
 
-| Area | Tools |
-|------|-------|
-| Data Fetching | `requests`, NewsAPI |
-| NLP / Sentiment | `vaderSentiment` |
-| Data Handling | `pandas` |
-| Visualization | `matplotlib`, `seaborn` |
-| Dashboard | `streamlit` |
-| Environment | `python-dotenv` |
+The workflow runs in three stages:
+
+1. **Fetch news** — pulls up to 100 recent football articles using NewsAPI
+2. **Analyze sentiment** — scores headlines/descriptions using VADER
+3. **Visualize results** — displays trends and distributions via Streamlit
+
+Each article receives:
+
+* A compound sentiment score (-1 to +1)
+* A label: Positive, Neutral, or Negative
 
 ---
 
-## Project Structure
+## 🧠 Key Design Decisions
+
+* **Used VADER sentiment analysis** because I had previously studied it in college and wanted hands-on experience applying it to real data.
+* Chose a **modular pipeline structure** to simulate a simple ETL workflow.
+* Focused on **headlines + descriptions** since full article text isn’t available in the free NewsAPI tier.
+
+---
+
+## ⚙️ Tech Stack
+
+* Data Fetching — NewsAPI, requests
+* NLP — VADER Sentiment
+* Processing — pandas
+* Visualization — matplotlib, seaborn
+* Dashboard — Streamlit
+
+---
+
+## 🏗️ Project Structure
 
 ```
-sports-sentiment-tracker/
-├── src/
-│   ├── scraper.py        # Fetches articles from NewsAPI, saves to CSV
-│   ├── sentiment.py      # Runs VADER sentiment analysis, outputs scored CSV
-│   └── visualizer.py     # Generates and saves chart images
-├── data/                 # CSVs and chart outputs (gitignored raw data)
-├── app.py                # Streamlit dashboard
-├── requirements.txt
-
+src/
+ ├── scraper.py        # Fetch articles
+ ├── sentiment.py      # Score sentiment
+ └── visualizer.py     # Generate charts
+app.py                 # Streamlit dashboard
 ```
 
 ---
 
-## Running Locally
+## ▶️ Running Locally
 
-**1. Clone the repo**
 ```bash
 git clone https://github.com/anriudh/sports-sentiment-tracker.git
 cd sports-sentiment-tracker
-```
-
-**2. Install dependencies**
-```bash
 pip install -r requirements.txt
 ```
 
-**3. Set up your API key**
+Create a `.env` file:
 
-Create a `.env` file in the project root:
 ```
-NEWS_API_KEY=your_newsapi_key_here
+NEWS_API_KEY=your_key_here
 ```
-Get a free key at [newsapi.org](https://newsapi.org).
 
-**4. Run the pipeline**
+Run pipeline:
+
 ```bash
-python src/scraper.py       # Fetch articles
-python src/sentiment.py     # Score sentiment
-```
-
-**5. Launch the dashboard**
-```bash
+python src/scraper.py
+python src/sentiment.py
 streamlit run app.py
 ```
 
 ---
 
-## Dashboard Features
+## 📈 Dashboard Highlights
 
-- **Summary metrics** -- total articles, % positive, % negative
-- **Sentiment distribution** -- bar chart of Positive / Neutral / Negative counts
-- **Sentiment over time** -- daily average compound score trend line
-- **Score histogram** -- distribution of all compound scores
-- **Filterable article table** -- browse and filter articles by sentiment label
+The dashboard allows quick exploration of:
 
-## Roadmap
-- [ ] In-app data refresh button to fetch latest articles without running scripts manually
+* Overall sentiment distribution
+* Trend of sentiment over time
+* Score histogram
+* Filterable article table
+
+---
+
+## ⚠️ Limitations
+
+* NewsAPI free tier restricts article count and provides only partial text.
+* Headlines often use neutral language, making sentiment classification challenging.
+* VADER is rule-based and may miss sarcasm or deeper context.
+
+---
+
+## 🎯 Why this project matters
+
+This project helped me move beyond notebook-only ML work and practice building a **complete data workflow** — from data ingestion to analysis to visualization.
+
+It also provided hands-on experience dealing with **real, messy text data**, which behaves very differently from clean academic datasets.
+
+---
+
+## 🔮 Possible Improvements
+
+* Add in-dashboard data refresh
+* Compare VADER with transformer-based models
+* Track sentiment for specific teams or leagues
