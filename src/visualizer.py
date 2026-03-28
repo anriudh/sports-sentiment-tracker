@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("data/articles_with_sentiment.csv")
+df = pd.read_csv("data/csv/articles_with_sentiment.csv")
 df["published_at"] = pd.to_datetime(df["published_at"])
 
 #Chart 1: Sentiment Distribution (bar chart)
@@ -12,7 +12,7 @@ plt.title("Sentiment Distribution of Football News")
 plt.xlabel("Sentiment")
 plt.ylabel("Number of Articles")
 plt.tight_layout()
-plt.savefig("data/sentiment_distribution.png")
+plt.savefig("data/plots/sentiment_distribution.png")
 plt.show()
 
 #Chart 2: Sentiment Over Time (line chart)
@@ -27,7 +27,7 @@ plt.xlabel("Date")
 plt.ylabel("Avg Compound Score")
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig("data/sentiment_over_time.png")
+plt.savefig("data/plots/sentiment_over_time.png")
 plt.show()
 
 #Chart 3: Compound Score Histogram
@@ -38,5 +38,5 @@ plt.title("Distribution of Sentiment Scores - Football News")
 plt.xlabel("Compound Score")
 plt.ylabel("Number of Articles")
 plt.tight_layout()
-plt.savefig("data/sentiment_histogram.png")
+plt.savefig("data/plots/sentiment_histogram.png")
 plt.show()

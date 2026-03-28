@@ -15,10 +15,10 @@ def analyze_sentiment(df):
         lambda x: "Positive" if x > 0.05 else ("Negative" if x < -0.05 else "Neutral")
     )
 
-    df.to_csv("data/articles_with_sentiment.csv", index=False)
+    df.to_csv("data/csv/articles_with_sentiment.csv", index=False)
     print(df[["title", "compound", "sentiment_label"]].head(10))
     return df
 
 if __name__ == "__main__":
-    df = pd.read_csv("data/raw_articles.csv")
+    df = pd.read_csv("data/csv/raw_articles.csv")
     analyze_sentiment(df)

@@ -9,7 +9,7 @@ st.markdown("Sentiment analysis of the latest football/soccer news using VADER N
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/articles_with_sentiment.csv")
+    df = pd.read_csv("data/csv/articles_with_sentiment.csv")
     df["published_at"] = pd.to_datetime(df["published_at"])
     return df
 

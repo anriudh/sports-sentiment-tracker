@@ -45,6 +45,9 @@ Each article receives:
 ## 🏗️ Project Structure
 
 ```
+data/
+ ├── csv/              # Stored CSV datasets
+ └── plots/            # Generated visualization charts
 src/
  ├── scraper.py        # Fetch articles
  ├── sentiment.py      # Score sentiment

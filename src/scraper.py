@@ -29,8 +29,8 @@ def fetch_articles():
         for article in articles
     ]
     df = pd.DataFrame(data)
-    df.to_csv("data/raw_articles.csv", index = False)
-    print(f"Saved {len(df)} articles to data/raw_articles.csv")
+    df.to_csv("data/csv/raw_articles.csv", index = False)
+    print(f"Saved {len(df)} articles to data/csv/raw_articles.csv")
     return df
 
 if __name__ == "__main__":
