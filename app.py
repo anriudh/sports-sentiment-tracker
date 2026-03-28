@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from src.scraper import fetch_articles
+from src.sentiment import analyze_sentiment
 
 st.set_page_config(page_title="Sports Sentiment Tracker", layout = "wide")
 st.title("Sports Sentiment Tracker")
@@ -12,6 +14,14 @@ def load_data():
     df = pd.read_csv("data/csv/articles_with_sentiment.csv")
     df["published_at"] = pd.to_datetime(df["published_at"])
     return df
+
+st.sidebar.header("Controls")
+if st.sidebar.button("Refresh Data"):
+    with st.spinner("Fetching latest news..."):
+        new_df = fetch_articles()
+        analyze_sentiment(new_df)
+        load_data.clear()
+        st.rerun()
 
 df = load_data()
 
